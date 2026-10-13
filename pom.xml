@@ -67,7 +67,8 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.example.wordyl.HelloApplication</mainClass>
+                            <!-- Zmień tutaj na Launcher! -->
+                            <mainClass>com.example.wordyl.Launcher</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
