@@ -1,0 +1,29 @@
+.root {
+    -fx-background-color: #121213;
+    -fx-font-family: "Arial", sans-serif;
+}
+
+#infor {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.button {
+    -fx-background-color: #818384;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+
+
+.button:hover {
+    -fx-background-color: #9a9c9e;
+}
+
+.button:pressed {
+    -fx-background-color: #565758;
+    -fx-text-fill: white;
+}
