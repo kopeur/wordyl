@@ -256,7 +256,7 @@ public class HelloController {
                 } else if (newPriority == 2) {
                     btn.setStyle("-fx-background-color: yellow; -fx-text-fill: white;");
                 } else if (newPriority == 1) {
-                    btn.setStyle("-fx-background-color: gray; -fx-text-fill: white;");
+                    btn.setStyle("-fx-background-color: darkgray; -fx-text-fill: white;");
                 }
             }
         }

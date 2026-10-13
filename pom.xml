@@ -11,7 +11,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- Recommended: Use release property to enforce JDK 21 across all plugins -->
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.release>21</maven.compiler.release>
         <javafx.version>21.0.6</javafx.version>
         <junit.version>5.12.1</junit.version>
@@ -49,17 +50,24 @@
 
     <build>
         <plugins>
+            <!-- Nowoczesny kompilator obsługujący moduły JavaFX -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+            </plugin>
+
             <!-- Wtyczka JavaFX -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>com.example.wordyl.HelloApplication</mainClass>
+                    <mainClass>com.example.wordyl.Launcher</mainClass>
                 </configuration>
             </plugin>
 
-            <!-- Nasza wtyczka Assembly do Fat JAR -->
+            <!-- Wtyczka Assembly do Fat JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -67,7 +75,6 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <!-- Zmień tutaj na Launcher! -->
                             <mainClass>com.example.wordyl.Launcher</mainClass>
                         </manifest>
                     </archive>
