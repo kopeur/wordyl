@@ -28,18 +28,22 @@ jobs:
           New-Item -ItemType Directory -Force -Path input
           Copy-Item target/wordyl-1.0-SNAPSHOT.jar input/
 
-      - name: Create Windows EXE with jpackage
+      - name: Create Windows app with jpackage
         run: >
           jpackage
-          --type exe
+          --type app-image
           --name Wordle
           --input input
           --main-jar wordyl-1.0-SNAPSHOT.jar
           --main-class com.example.wordyl.Launcher
-          --add-modules java.base,java.desktop,java.logging,java.xml,jdk.unsupported
-          --win-shortcut
-          --win-menu
-          --dest target/installer
+          --win-console
+          --dest target/app
+
+      - name: Upload app
+        uses: actions/upload-artifact@v4
+        with:
+          name: Wordle-Windows-App
+          path: target/app/Wordle
 
       - name: Upload EXE Artifact
         uses: actions/upload-artifact@v4
