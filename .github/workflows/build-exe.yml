@@ -21,11 +21,16 @@ jobs:
       - name: Build Fat JAR with Maven
         run: mvn clean package
 
+      - name: Download JavaFX JMODs
+        run: |
+          Invoke-WebRequest -Uri "https://download.gluonhq.com/openjfx/21.0.6/openjfx-21.0.6_windows-x64_bin-jmods.zip" -OutFile "javafx-jmods.zip"
+          Expand-Archive -Path "javafx-jmods.zip" -DestinationPath "javafx-jmods"
+
       - name: Create Windows EXE with jpackage
-        run: jpackage --type exe --name Wordle --input target --main-jar wordyl-1.0-SNAPSHOT.jar --main-class com.example.wordyl.Launcher --vendor "Example" --dest target/installer
+        run: jpackage --type app-image --name Wordle --input target --main-jar wordyl-1.0-SNAPSHOT.jar --main-class com.example.wordyl.Launcher --module-path "javafx-jmods/javafx-jmods-21.0.6" --add-modules javafx.controls,javafx.fxml --dest target/installer
 
       - name: Upload EXE Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Wordle-Windows-EXE
-          path: target/installer/*.exe
+          path: target/installer/Wordle/**
