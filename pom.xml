@@ -50,6 +50,7 @@
 
     <build>
         <plugins>
+
             <!-- Nowoczesny kompilator obsługujący moduły JavaFX -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
