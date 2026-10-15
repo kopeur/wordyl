@@ -18,8 +18,19 @@ jobs:
           distribution: 'zulu'
           java-version: '21'
 
-      - name: Build Native EXE with Maven
-        run: mvn clean javafx:jpackage
+      - name: Build Fat JAR with Maven
+        run: mvn clean package
+
+      - name: Create Windows EXE with jpackage
+        run: |
+          jpackage ^
+            --type exe ^
+            --name Wordle ^
+            --input target ^
+            --main-jar wordyl-1.0-SNAPSHOT.jar ^
+            --main-class com.example.wordyl.Launcher ^
+            --vendor "Example" ^
+            --dest target/installer
 
       - name: Upload EXE Artifact
         uses: actions/upload-artifact@v4
