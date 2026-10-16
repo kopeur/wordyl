@@ -243,7 +243,7 @@ public class HelloController {
         }
     }
 
-    // Pomocnicza metoda aktualizująca klawiaturę z uwzględnieniem priorytetów
+    
     private void updateKeyboardKey(char letter, int newPriority) {
         int currentPriority = keyboardStatus.getOrDefault(letter, 0);
 
